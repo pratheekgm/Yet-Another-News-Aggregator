@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+ <!--  <link rel="stylesheet" href="css/stylew.css">
+  --> <style type="text/css">
+  	@import url('https://fonts.googleapis.com/css?family=Rajdhani:700|Raleway:300|Nunito:300');
+
+html{
+	height:100%;
+	}
+
+body{
+	background-color: #365382;
+	height: 100%;
+}
+
+h1 {
+    letter-spacing: 7px;
+    font-family: 'Rajdhani', Arial;
+}
+
+#lgin{
+	background-color: #eee;
+}
+
+
+#active{
+	color:rgb(255,255,255);
+}
+
+.sub{
+ margin-top: 35px;
+ text-transform: uppercase;
+ background-color: #365382;
+ color: white;
+}
+
+.register{
+	padding:15%;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	background-color: #eee;
+}
+
+.spn{
+	font-size: 35px;
+	padding-right: 25px;
+	padding-bottom: 2px;
+	padding-left: 10px;
+	cursor:pointer;
+}
+
+.navbar-inverse	{
+	background-color: rgba(0,0,0,0);
+	border-color: rgba(0,0,0,0);
+ font-family: 'Rajdhani', Arial;
+	 font-weight: 300;
+	 border:0px;
+}
+
+.navbar-inverse .navbar-brand {
+    color:rgb(255,255,255);
+    font-size:45px;
+
+}
+.navbar-inverse .navbar-nav>.active>a{
+	background-color: #365382;
+}
+.navbar-nav {
+	font-size: 23px;
+}
+
+
+.aa{
+	font-size: 20px;
+	padding-top: 15px;
+	position: relative;
+}
+
+.form-control{
+	font-size: 20px;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+.box{
+	background-color:#365382;
+	padding:15%;
+	margin: 10%;
+	padding-top: 10%;
+	margin-top: 0px;
+    margin-bottom:  0px;
+    
+    /*box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);*/
+    font-family: 'Nunito';
+	color: black;
+	position: relative;
+	font-weight:300;
+}
+
+.login{
+	padding:15%;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);	background-color: #eee;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: black;
+}
+  </style>
+  <title>EA</title>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" id="navv">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsemenu">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="" class="navbar-brand">YANA</a>
+		</div>
+			<div class="collapse navbar-collapse" id="collapsemenu">
+				<ul class="nav navbar-nav navbar-right ">
+					<li class="active"><a href="">Home</a></li>
+					<li><a href="">Profile</a></li>
+					<li><a href="">Catagories</a></li>
+					<li><a href="">Post</a></li>
+					<li><a href="">About</a></li>
+					<li>
+						<a class="dropdown-toggle" data-toggle="dropdown" role="button" href="">More<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="">stuff</a></li>
+							<li><a href="">placeholer?</a></li>
+							<li><a href="">stuff2</a></li>
+						</ul>
+					</li>
+		<!-- 			<button type="button" class="btn btn-default navbar-btn navbar-right">Sign out</button>
+	 -->		</ul>
+	 		</div>
+	</div>
+</nav>
+
+<div class="container box">
+<span class="spn" id="lgin"> LOGIN</span>
+<span class="spn" id="regis">REGISTER</span>
+
+	<div class="login" >
+		<label for="userName" class="aa">Username</label>
+		<input type="text"  class="form-control" name="userName" id="log_U" >
+		<label for="password" class="aa">Password</label>
+		<input type="password"  class="form-control" name="password"   id="log_P">
+		<input type="button" class="form-control sub" value="login" id="log_S" >
+	</div>
+	<div class="register" >
+		<label for="e_email" class="aa">Enter your Email</label>
+		<input type="email"  class="form-control" name="e_email" id="reg_E" >
+		<label for="e_user" class="aa">Enter your Username</label>
+		<input type="text"  class="form-control" name="e_user" id="reg_U" >
+		
+		<label for="e_password" class="aa">Enter the Password</label>
+		<input type="password"  class="form-control" name="e_password"   id="reg_P"   >
+		<label for="er_password" class="aa">Re-Enter the Password</label>
+		<input type="password"  class="form-control" name="er_password"   id="reg_Pr"   >
+		
+		<input type="button" class="form-control sub" value="Submit" id="reg_S" >
+	</div>
+</div>
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script >
+	$(document).ready(function() {
+		$(".register").hide();
+	
+	});
+	$("#lgin").click(function() {
+		$(".register").hide();
+		$(".login").show();
+		$(this).css("background-color", "#eee");
+		$("#regis").css("background-color", "#365382");		
+	});
+	$("#regis").click(function() {
+		$(".register").show();
+		$(".login").hide();
+		$("#lgin").css(	"background-color", "#365382");
+		$(this).css(	"background-color", "#eee");		
+	});
+
+	$("#reg_S").hover(
+		function() {
+		$(this).css({"background-color":"rgba(54, 83, 130,0.8)","color":"black"});
+		},
+		function() {
+		$(this).css({"background-color":"#365382","color":"white"})}
+
+		);		
+
+	$("#log_S").hover(
+		function() {
+		$(this).css({"background-color":"rgba(54, 83, 130,0.8)","color":"black"});
+		},
+		function() {
+		$(this).css({"background-color":"#365382","color":"white"})}
+
+
+		);		
+
+
+$(document).scroll(function() {
+  	$("#navv").css("background-color","rgba(255,255,255,0.9)");
+  	$(".navbar-inverse .navbar-brand ").css("color","#365382")
+  	if($(this).scrollTop()==0)
+{
+	$("#navv").css("background-color","rgba(255,255,255,0)");
+  	$(".navbar-inverse .navbar-brand ").css("color","white");
+  	
+}
+
+  	
+});
+
+	
+</script>
+</body>
+</html>
