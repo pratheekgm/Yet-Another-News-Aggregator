@@ -5,8 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
- <!--  <link rel="stylesheet" href="css/stylew.css">
-  --> <style type="text/css">
+  <style type="text/css">
   	@import url('https://fonts.googleapis.com/css?family=Rajdhani:700|Raleway:300|Nunito:300');
 
 html{
@@ -26,14 +25,25 @@ h1 {
 #lgin{
 	background-color: #eee;
 }
+#logstat{
+	color:green;
+	font-size: 1.22em;
+	margin-top:20px;
+}
 
+
+#regstat{
+	color:green;
+	font-size: 1.22em;
+	margin-top:20px;
+}
 
 #active{
 	color:rgb(255,255,255);
 }
 
 .sub{
- margin-top: 35px;
+ margin-top: 25px;
  text-transform: uppercase;
  background-color: #365382;
  color: white;
@@ -93,8 +103,6 @@ h1 {
 	padding-top: 10%;
 	margin-top: 0px;
     margin-bottom:  0px;
-    
-    /*box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);*/
     font-family: 'Nunito';
 	color: black;
 	position: relative;
@@ -102,8 +110,8 @@ h1 {
 }
 
 .login{
-	padding:15%;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);	background-color: #eee;
+ 	padding:15%;
+ 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);	background-color: #eee;
 }
 
 .navbar-inverse .navbar-nav>li>a {
@@ -153,7 +161,8 @@ h1 {
 		<input type="text"  class="form-control" name="userName" id="log_U" >
 		<label for="password" class="aa">Password</label>
 		<input type="password"  class="form-control" name="password"   id="log_P">
-		<input type="button" class="form-control sub" value="login" id="log_S" >
+		<input type="button" class="form-control sub" value="login" id="log_S" onclick="login()" >
+		<span id="logstat"></span>
 	</div>
 	<div class="register" >
 		<label for="e_email" class="aa">Enter your Email</label>
@@ -166,16 +175,63 @@ h1 {
 		<label for="er_password" class="aa">Re-Enter the Password</label>
 		<input type="password"  class="form-control" name="er_password"   id="reg_Pr"   >
 		
-		<input type="button" class="form-control sub" value="Submit" id="reg_S" >
+		<input type="button" class="form-control sub" value="Submit" id="reg_S" onclick="register()">
+		<span id="regstat"></span>
 	</div>
 </div>
 
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script >
+<script type="text/javascript">
+	var xhr=new XMLHttpRequest();
+	var xhr1=new XMLHttpRequest();
+	function login(){
+		us=document.getElementById("log_U").value;
+		pas=document.getElementById("log_P").value;		
+		lg="http://localhost/Yans/login.php?userName="+us+"&password="+pas;
+		xhr.onreadystatechange=loginphp;
+		xhr.open("GET","http://localhost/Yans/login.php?userName="+us+"&password="+pas,true);
+		xhr.send();
+	}
+	
+	function loginphp()
+ 	{ 
+		if(xhr.readyState == 4 && xhr.status == 200){
+			console.log(xhr.responseText);
+			document.getElementById("logstat").innerHTML=xhr.responseText;
+		}
+	}
+
+	function register(){
+		us=document.getElementById("reg_U").value;
+		pas=document.getElementById("reg_P").value;		
+		cpas=document.getElementById("reg_Pr").value;
+		eml=document.getElementById("reg_E").value;
+		xhr1.onreadystatechange=regisphp;
+		console.log(us);
+		console.log(cpas);
+		console.log(pas);
+		console.log(eml);
+		console.log("http://localhost/Yans/login.php?name="+us+"&password="+pas+"&cpassword="+cpas+"&email="+eml);
+		xhr1.open("GET","http://localhost/Yans/register.php?name="+us+"&password="+pas+"&cpassword="+cpas+"&email="+eml, true);
+		xhr1.send();
+	}
+
+	function regisphp()
+ 	{ 
+		if(xhr1.readyState == 4 && xhr1.status == 200){
+			console.log(xhr1.responseText);
+
+			document.getElementById("regstat").innerHTML=xhr1.responseText;
+		}
+	}
+</script>
+<script>
 	$(document).ready(function() {
 		$(".register").hide();
-	
+	$("#navv").css("background-color","rgba(255,255,255,0.9)");
+  	$(".navbar-inverse .navbar-brand ").css("color","#365382");
+  	
 	});
 	$("#lgin").click(function() {
 		$(".register").hide();
@@ -210,20 +266,17 @@ h1 {
 		);		
 
 
-$(document).scroll(function() {
-  	$("#navv").css("background-color","rgba(255,255,255,0.9)");
-  	$(".navbar-inverse .navbar-brand ").css("color","#365382")
-  	if($(this).scrollTop()==0)
-{
-	$("#navv").css("background-color","rgba(255,255,255,0)");
-  	$(".navbar-inverse .navbar-brand ").css("color","white");
-  	
-}
+	// $(document).scroll(function() {
+	//   	$("#navv").css("background-color","rgba(255,255,255,0.9)");
+	//   	$(".navbar-inverse .navbar-brand ").css("color","#365382");
+	//   	if($(this).scrollTop()==0)
+	// {
+	// 	$("#navv").css("background-color","rgba(255,255,255,0)");
+	//   	$(".navbar-inverse .navbar-brand ").css("color","white"); 	
+	// }
+	// });
 
-  	
-});
-
-	
+		
 </script>
 </body>
 </html>
