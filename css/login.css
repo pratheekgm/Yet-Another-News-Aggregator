@@ -1,0 +1,111 @@
+  	@import url('https://fonts.googleapis.com/css?family=Rajdhani:700|Raleway:300|Nunito:300');
+
+html{
+	height:100%;
+	}
+
+body{
+	background-color: #365382;
+	height: 100%;
+}
+
+h1 {
+    letter-spacing: 7px;
+    font-family: 'Rajdhani', Arial;
+}
+
+#lgin{
+	background-color: #eee;
+}
+#logstat{
+	color:green;
+	font-size: 1.22em;
+	margin-top:20px;
+}
+
+
+#regstat{
+	color:green;
+	font-size: 1.22em;
+	margin-top:20px;
+}
+
+#active{
+	color:rgb(255,255,255);
+}
+
+.sub{
+ margin-top: 25px;
+ text-transform: uppercase;
+ background-color: #365382;
+ color: white;
+}
+
+.register{
+	padding:15%;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	background-color: #eee;
+}
+
+.spn{
+	font-size: 35px;
+	padding-right: 25px;
+	padding-bottom: 2px;
+	padding-left: 10px;
+	cursor:pointer;
+}
+
+.navbar-inverse	{
+	background-color: rgba(0,0,0,0);
+	border-color: rgba(0,0,0,0);
+ font-family: 'Rajdhani', Arial;
+	 font-weight: 300;
+	 border:0px;
+}
+
+.navbar-inverse .navbar-brand {
+    color:rgb(255,255,255);
+    font-size:45px;
+
+}
+.navbar-inverse .navbar-nav>.active>a{
+	background-color: #365382;
+}
+.navbar-nav {
+	font-size: 23px;
+}
+
+
+.aa{
+	font-size: 20px;
+	padding-top: 15px;
+	position: relative;
+}
+
+.form-control{
+	font-size: 20px;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+.box{
+	background-color:#365382;
+	padding:15%;
+	margin: 10%;
+	padding-top: 10%;
+	margin-top: 0px;
+    margin-bottom:  0px;
+    font-family: 'Nunito';
+	color: black;
+	position: relative;
+	font-weight:300;
+}
+
+.login{
+ 	padding:15%;
+ 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);	background-color: #eee;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: black;
+}
