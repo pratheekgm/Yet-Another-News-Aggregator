@@ -9,9 +9,41 @@
   <style type="text/css">
 
   </style>
-  <title>EA</title>
+  <title>Login</title>
 </head>
-<body>
+<script type="text/javascript">
+	var xhr = new XMLHttpRequest();
+	function init(){
+		
+		xhr.onreadystatechange = set_usr;
+		xhr.open("GET","login_check.php",true);console.log("checking...");
+		
+		xhr.send();
+	}
+	
+	function set_usr(){
+		if(xhr.readyState == 4 && xhr.status == 200){
+			if(xhr.responseText != "-1"){
+				document.getElementById("d_1").innerHTML = xhr.responseText;
+				document.getElementById("d_2").innerHTML = "Logout";
+				document.getElementById("d_2").setAttribute("onclick","logout()");
+				 document.getElementById("d_2").setAttribute("href","index.html");
+				console.log("changed!");
+			}
+			else {
+				document.getElementById("d_1").innerHTML = "Login";
+				document.getElementById("d_2").innerHTML = "About";
+				 document.getElementById("d_1").setAttribute("href","login.html");
+				 document.getElementById("d_2").setAttribute("href","about.html");
+			}
+		}
+	}
+	function logout(){
+		xhr.open("GET","logout.php",true);console.log("logging out...");
+		xhr.send();
+	}
+</script>
+<body onload="init()">
 <nav class="navbar navbar-inverse navbar-fixed-top" id="navv">
 	<div class="container">
 		<div class="navbar-header">
@@ -20,21 +52,20 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a href="" class="navbar-brand">YANA</a>
+			<a href="index.html" class="navbar-brand">YANA</a>
 		</div>
 			<div class="collapse navbar-collapse" id="collapsemenu">
 				<ul class="nav navbar-nav navbar-right ">
-					<li class="active"><a href="">Home</a></li>
+					<li class="active"><a href="index.html">Home</a></li>
 					<li><a href="">Profile</a></li>
 					<li><a href="">Catagories</a></li>
-					<li><a href="">Post</a></li>
-					<li><a href="">About</a></li>
+					<li><a href="new_post.html">Post</a></li>
+					
 					<li>
 						<a class="dropdown-toggle" data-toggle="dropdown" role="button" href="">More<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="">stuff</a></li>
-							<li><a href="">placeholer?</a></li>
-							<li><a href="">stuff2</a></li>
+							<li><a id="d_1">Login</a></li>
+							<li><a id="d_2">Sign Up</a></li>
 						</ul>
 					</li>
 		<!-- 			<button type="button" class="btn btn-default navbar-btn navbar-right">Sign out</button>
@@ -89,7 +120,12 @@
  	{ 
 		if(xhr.readyState == 4 && xhr.status == 200){
 			console.log(xhr.responseText);
-			document.getElementById("logstat").innerHTML=xhr.responseText;
+			if(xhr.responseText == "Your Login Name or Password is invalid")
+				document.getElementById("logstat").innerHTML=xhr.responseText;
+			else{
+					window.open("Index.html","_self");
+				
+			}
 		}
 	}
 
